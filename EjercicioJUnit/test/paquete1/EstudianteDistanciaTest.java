@@ -90,6 +90,7 @@ public class EstudianteDistanciaTest {
         System.out.println("obtenerNumeroAsignaturas");
         int expResult = 10;
         instance.establecerNumeroAsginaturas(10);
+        
         int result = instance.obtenerNumeroAsignaturas();
         
         assertEquals(expResult, result);
