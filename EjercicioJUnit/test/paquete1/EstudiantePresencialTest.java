@@ -48,14 +48,14 @@ public class EstudiantePresencialTest {
             IllegalArgumentException,
             IllegalAccessException  {
         System.out.println("establecerNumeroCreditos");
-        int numero = 0;
+        int numero = 10;
         instance.establecerNumeroCreditos(numero);
         Field field = instance.getClass().getDeclaredField("numeroCreditos");
         field.setAccessible(true);
-        assertEquals(field.get(instance),0);
+        assertEquals(field.get(instance),10);
         
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -66,11 +66,11 @@ public class EstudiantePresencialTest {
             IllegalArgumentException, 
             IllegalAccessException {
         System.out.println("establecerCostoCredito");
-        double valor = 0.0;
+        double valor = 1.0;
         instance.establecerCostoCredito(valor);
         Field field = instance.getClass().getDeclaredField("costoCredito");
         field.setAccessible(true);
-        assertEquals(field.get(instance),0.0);
+        assertEquals(field.get(instance),1.0);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -84,10 +84,12 @@ public class EstudiantePresencialTest {
             IllegalArgumentException, 
             IllegalAccessException {
         System.out.println("calcularMatriculaPresencial");
+        instance.establecerNumeroCreditos(10);
+        instance.establecerCostoCredito(1.0);
         instance.calcularMatriculaPresencial();
          Field field = instance.getClass().getDeclaredField("matriculaPresencial");
         field.setAccessible(true);
-        assertEquals(field.get(instance),0.0);
+        assertEquals(field.get(instance),10.0);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
@@ -98,9 +100,9 @@ public class EstudiantePresencialTest {
     @Test
     public void testObtenerNumeroCreditos() {
         System.out.println("obtenerNumeroCreditos");
-        int expResult = 0;
+        int expResult = 10;
         int result = instance.obtenerNumeroCreditos();
-        instance.establecerNumeroCreditos(0);
+        instance.establecerNumeroCreditos(10);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -112,9 +114,9 @@ public class EstudiantePresencialTest {
     @Test
     public void testObtenerCostoCredito() {
         System.out.println("obtenerCostoCredito");
-        double expResult = 0.0;
+        double expResult = 2.0;
         double result = instance.obtenerCostoCredito();
-        instance.establecerCostoCredito(0.0);
+        instance.establecerCostoCredito(2.0);
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -126,6 +128,9 @@ public class EstudiantePresencialTest {
     @Test
     public void testObtenerMatriculaPresencial() {
         System.out.println("obtenerMatriculaPresencial");
+        instance.establecerCostoCredito(1.0);
+        instance.establecerNumeroCreditos(10);
+        instance.calcularMatriculaPresencial();
         double expResult = 0.0;
         double result = instance.obtenerMatriculaPresencial();
         instance.calcularMatriculaPresencial();
